@@ -17,6 +17,7 @@ contract LibraryContract {
 
     Library[] public libraries;
     mapping(address => bool) private libraryExist;
+    mapping(string => bool) private libraryNameTaken;
 
     function registerLibrary(
         string memory _name,
@@ -24,6 +25,10 @@ contract LibraryContract {
     ) public {
         require(!libraryExist[msg.sender], "Library registered!");
         libraryExist[msg.sender] = true;
+
+        require(!libraryNameTaken[_name], "Library name already exists");
+        libraryNameTaken[_name] = true;
+
         MemberContract member = new MemberContract();
         BookContract book = new BookContract(
             address(member),
