@@ -49,7 +49,7 @@ contract LibraryContract {
         myLibrary.book.addBook(_title, _author, _genre);
     }
 
-    function addNeMember(
+    function addNewMember(
         uint256 _libraryId,
         string memory _name,
         uint256 _age,

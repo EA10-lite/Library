@@ -14,34 +14,6 @@
 					},
 					{
 						"internalType": "string",
-						"name": "_name",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_age",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "_wallet",
-						"type": "address"
-					}
-				],
-				"name": "addNeMember",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_libraryId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
 						"name": "_title",
 						"type": "string"
 					},
@@ -57,6 +29,34 @@
 					}
 				],
 				"name": "addNewBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_libraryId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_wallet",
+						"type": "address"
+					}
+				],
+				"name": "addNewMember",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -152,27 +152,27 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0x2d09835222bf6624b1b9b09d01aad466e9cbbbfbdac05f818a954aca08e49e61",
+			"keccak256": "0xecf1399e120198eb8f27eb214b3b5889e5feaeb12331d5841fbec5d0b285b89d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://46f4a260ba7e3e70b135269076aea859b40a7e8d064876f0d5cf420d931085b6",
-				"dweb:/ipfs/QmePCYYh18L6K2SMWmQhApBFdSpFQA42QYenfysJLJBUbm"
+				"bzz-raw://7bc3ab3f601b4b9fd63e00aa9596b09e237ac562b5803b1fa8db06a18fb700c4",
+				"dweb:/ipfs/QmeRKQ7WDQY7g8k9rDcYRtWVCKN7nCr35qYSKin48SrZjQ"
 			]
 		},
 		"Library.sol": {
-			"keccak256": "0xd4431098aad4ac3f17231d49bd0208458e2531c5d36810b513edb1c775d720fe",
+			"keccak256": "0x1e409182812f0faef3328df29beea2679c25f3d559fe8874541fed8f91344786",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9cf991624b648ce97e7a3d6ababc0bbd5621cd2a36288c619ad143ee958d82ea",
-				"dweb:/ipfs/QmPzuzUWJknrrSsn4n33iQZcjQGAkXeGywGnqfELQ4uWrG"
+				"bzz-raw://ccf98e56737a6347982c02b55c4a8aad5575097fd271ca78c3c7283eb25bafb9",
+				"dweb:/ipfs/QmQ32jEwhHzJ4ebm8bsyX7LY6e4gNnbX7dVgb37D3SsJeM"
 			]
 		},
 		"Member.sol": {
-			"keccak256": "0x423411f1e20245c887d000b4b59e0a1bc805750c4032e87bfa44e8d853409814",
+			"keccak256": "0x1c82c9fdc15986216a7512ae9c355d504854bea46d2d8191abb52e403bf52416",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://809932ad7915c720eabaca1a88f024161fe6e3faa7a76709c001b523db3af2e3",
-				"dweb:/ipfs/QmZckwDyVcYj9uM3C3bPXZwJ8Gn4ey6qDnsuEzkkRjAws3"
+				"bzz-raw://b835173621fa413c1f8708bd1ed5a1342cd7326af8f37c2355dc416ebbc05809",
+				"dweb:/ipfs/QmaXGFQSb1k1x3GiMAoNsjtfJ2UmcmAeRGHaUQuVNyPhaa"
 			]
 		}
 	},

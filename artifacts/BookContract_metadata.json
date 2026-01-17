@@ -8,13 +8,60 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "_title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_author",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_genre",
+						"type": "string"
+					}
+				],
+				"name": "addBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
 				],
-				"name": "listOfBooks",
+				"name": "bookIds",
 				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "books",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "ID",
+						"type": "uint256"
+					},
 					{
 						"internalType": "string",
 						"name": "title",
@@ -24,6 +71,131 @@
 						"internalType": "string",
 						"name": "author",
 						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "genre",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "available",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "exists",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "date",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ID",
+						"type": "uint256"
+					}
+				],
+				"name": "getBookById",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "ID",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "author",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "genre",
+								"type": "string"
+							},
+							{
+								"internalType": "bool",
+								"name": "available",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "exists",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "date",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct BookContract.Book",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "listOfBooks",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "ID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "author",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "genre",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "available",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "exists",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "date",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -58,10 +230,11 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0xa5ac10cdb223234e3f17092bf974ca378d5118e09fc0efc1e16e26874801f9fc",
+			"keccak256": "0xecf1399e120198eb8f27eb214b3b5889e5feaeb12331d5841fbec5d0b285b89d",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://d698eef007ddba2050dbaccaae6d82bd2a28342b1df24defe955d82caacf358d",
-				"dweb:/ipfs/QmVJqKBA1rFcXeDYTnvTm9rp55iqgenh4a58vG3Cwsxy1h"
+				"bzz-raw://7bc3ab3f601b4b9fd63e00aa9596b09e237ac562b5803b1fa8db06a18fb700c4",
+				"dweb:/ipfs/QmeRKQ7WDQY7g8k9rDcYRtWVCKN7nCr35qYSKin48SrZjQ"
 			]
 		}
 	},
