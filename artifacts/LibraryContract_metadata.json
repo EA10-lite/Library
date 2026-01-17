@@ -1,0 +1,180 @@
+{
+	"compiler": {
+		"version": "0.8.31+commit.fd3a2265"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_libraryId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_wallet",
+						"type": "address"
+					}
+				],
+				"name": "addNeMember",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_libraryId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_author",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_genre",
+						"type": "string"
+					}
+				],
+				"name": "addNewBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "libraries",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "ID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "location",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "admin",
+						"type": "address"
+					},
+					{
+						"internalType": "contract BookContract",
+						"name": "book",
+						"type": "address"
+					},
+					{
+						"internalType": "contract MemberContract",
+						"name": "member",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_location",
+						"type": "string"
+					}
+				],
+				"name": "registerLibrary",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Library.sol": "LibraryContract"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Book.sol": {
+			"keccak256": "0x2d09835222bf6624b1b9b09d01aad466e9cbbbfbdac05f818a954aca08e49e61",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://46f4a260ba7e3e70b135269076aea859b40a7e8d064876f0d5cf420d931085b6",
+				"dweb:/ipfs/QmePCYYh18L6K2SMWmQhApBFdSpFQA42QYenfysJLJBUbm"
+			]
+		},
+		"Library.sol": {
+			"keccak256": "0xd4431098aad4ac3f17231d49bd0208458e2531c5d36810b513edb1c775d720fe",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9cf991624b648ce97e7a3d6ababc0bbd5621cd2a36288c619ad143ee958d82ea",
+				"dweb:/ipfs/QmPzuzUWJknrrSsn4n33iQZcjQGAkXeGywGnqfELQ4uWrG"
+			]
+		},
+		"Member.sol": {
+			"keccak256": "0x423411f1e20245c887d000b4b59e0a1bc805750c4032e87bfa44e8d853409814",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://809932ad7915c720eabaca1a88f024161fe6e3faa7a76709c001b523db3af2e3",
+				"dweb:/ipfs/QmZckwDyVcYj9uM3C3bPXZwJ8Gn4ey6qDnsuEzkkRjAws3"
+			]
+		}
+	},
+	"version": 1
+}

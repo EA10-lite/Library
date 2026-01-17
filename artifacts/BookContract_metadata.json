@@ -1,0 +1,69 @@
+{
+	"compiler": {
+		"version": "0.8.31+commit.fd3a2265"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "listOfBooks",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "author",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Book.sol": "BookContract"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Book.sol": {
+			"keccak256": "0xa5ac10cdb223234e3f17092bf974ca378d5118e09fc0efc1e16e26874801f9fc",
+			"urls": [
+				"bzz-raw://d698eef007ddba2050dbaccaae6d82bd2a28342b1df24defe955d82caacf358d",
+				"dweb:/ipfs/QmVJqKBA1rFcXeDYTnvTm9rp55iqgenh4a58vG3Cwsxy1h"
+			]
+		}
+	},
+	"version": 1
+}
