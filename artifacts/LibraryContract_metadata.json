@@ -62,6 +62,31 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "borrowBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_libraryId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_bookId",
+						"type": "uint256"
+					}
+				],
+				"name": "borrowFromLibrary",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -160,11 +185,11 @@
 			]
 		},
 		"Library.sol": {
-			"keccak256": "0xe7d34083136a6b54ad54bda8bdf30354688db58d25476bbb6c059f51f2a3e9bf",
+			"keccak256": "0x1ee8675fabea793acd54898129041e36307163833dda4bc105fa3e979e8ffab7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3cefdd5a32e8129569a86c2f52d05539a3bdb607d4cb1be22e9aae4fbe7cfbd7",
-				"dweb:/ipfs/QmXxoyrnymkvx3x15JcT2WRhhpns4t3cSpo1i1uN3gepSr"
+				"bzz-raw://65f15b3fee5773154d3f181a9b5325d4b6998b2dad4ec462ab3b8b53deeb6d9e",
+				"dweb:/ipfs/QmcsziZDJhNHgonxsPcpzjnMvrp3kvCEHkJcW8gp4gB2BS"
 			]
 		},
 		"Member.sol": {

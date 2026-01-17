@@ -76,4 +76,14 @@ contract LibraryContract {
 
         revert("Library not found!");
     }
+
+
+    function borrowBook() public {
+
+    }
+
+    function borrowFromLibrary(uint256 _libraryId, uint256 _bookId) public payable {
+        Library storage myLibrary = _getMyLibrary(_libraryId);
+        myLibrary.book.borrowBook{value: msg.value}(_bookId);
+    }
 }
