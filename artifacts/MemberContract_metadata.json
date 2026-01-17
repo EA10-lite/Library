@@ -8,6 +8,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "memberExist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -91,11 +110,11 @@
 	},
 	"sources": {
 		"Member.sol": {
-			"keccak256": "0x423411f1e20245c887d000b4b59e0a1bc805750c4032e87bfa44e8d853409814",
+			"keccak256": "0x8f1c91002cc93ae6f5a9f8bf743fb2dc7568be8871b8959621c1ec3d7dbc7c4a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://809932ad7915c720eabaca1a88f024161fe6e3faa7a76709c001b523db3af2e3",
-				"dweb:/ipfs/QmZckwDyVcYj9uM3C3bPXZwJ8Gn4ey6qDnsuEzkkRjAws3"
+				"bzz-raw://d50f55eca3e42677d68d8af3f67f9a54b3bbb8318a1561b423ef9aff2533fe11",
+				"dweb:/ipfs/QmdPDg3iz5RZssFM2TH2mDxDX2FJMVRDAmaFAJbNfm445U"
 			]
 		}
 	},
