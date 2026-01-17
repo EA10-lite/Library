@@ -8,6 +8,22 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_memberContract",
+						"type": "address"
+					},
+					{
+						"internalType": "address payable",
+						"name": "_libraryAdmin",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "_title",
 						"type": "string"
@@ -106,7 +122,7 @@
 				],
 				"name": "borrowBook",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -190,6 +206,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "libraryAdmin",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -237,6 +266,19 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "memberContract",
+				"outputs": [
+					{
+						"internalType": "contract MemberContract",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -267,11 +309,19 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0x6dfb6dc4727b7d3cfe000d8b5f7efe2adfcf24efda0eebcdeb221305d2bbe732",
+			"keccak256": "0x907d829343c8fe578344c8463578396bebc8ab621f96066c1a9802582744b4e6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://463d95a296ddbb472c0cb57b81df7030d7380501600f15ccf947224a1a8d388c",
-				"dweb:/ipfs/QmSaxqZQQbcAguTEBqE86oMgVKHgf6SQp1CG2FM51SNv1t"
+				"bzz-raw://d615044b7c6720b4d09f8443c840caca58020ee82e15e579493b143b683f5938",
+				"dweb:/ipfs/QmPmS3rzdtWy5rDcA24TH72bofxgyLaxo2KhBDdyQAhKaV"
+			]
+		},
+		"Member.sol": {
+			"keccak256": "0x8f1c91002cc93ae6f5a9f8bf743fb2dc7568be8871b8959621c1ec3d7dbc7c4a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d50f55eca3e42677d68d8af3f67f9a54b3bbb8318a1561b423ef9aff2533fe11",
+				"dweb:/ipfs/QmdPDg3iz5RZssFM2TH2mDxDX2FJMVRDAmaFAJbNfm445U"
 			]
 		}
 	},

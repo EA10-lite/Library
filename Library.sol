@@ -22,8 +22,11 @@ contract LibraryContract {
         string memory _name,
         string memory _location
     ) public {
-        BookContract book = new BookContract();
         MemberContract member = new MemberContract();
+        BookContract book = new BookContract(
+            address(member),
+            payable(msg.sender)
+        );
 
         uint256 _ID = libraries.length + 1;
 

@@ -11,7 +11,7 @@ contract MemberContract {
     }
 
     Member[] public members;
-    mapping(address => bool) private memberExist;
+    mapping(address => bool) public memberExist;
 
     function registerMember(
         string memory _name,
@@ -22,7 +22,7 @@ contract MemberContract {
         require(_age > 15, "User must be older than 15");
         require(!memberExist[_wallet], "User registered!");
         memberExist[_wallet] = true;
-        
+
         uint256 _ID = members.length + 1;
         Member memory newMember = Member(
             _ID,
