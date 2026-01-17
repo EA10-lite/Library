@@ -58,6 +58,10 @@ contract BookContract {
         bookIds.push(_ID);
     }
 
+    function getBooks() public view returns (Book[] memory) {
+        return listOfBooks;
+    }
+
     function getBookById(uint256 _ID)  public view returns (Book memory) {
         require(books[_ID].exists, "Book not found");
         return books[_ID];

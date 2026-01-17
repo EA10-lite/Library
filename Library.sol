@@ -16,12 +16,14 @@ contract LibraryContract {
     }
 
     Library[] public libraries;
-    mapping(bool => string) private libraryExist;
+    mapping(address => bool) private libraryExist;
 
     function registerLibrary(
         string memory _name,
         string memory _location
     ) public {
+        require(!libraryExist[msg.sender], "Library registered!");
+        libraryExist[msg.sender] = true;
         MemberContract member = new MemberContract();
         BookContract book = new BookContract(
             address(member),
@@ -77,13 +79,13 @@ contract LibraryContract {
         revert("Library not found!");
     }
 
-
-    function borrowBook() public {
-
-    }
-
     function borrowFromLibrary(uint256 _libraryId, uint256 _bookId) public payable {
         Library storage myLibrary = _getMyLibrary(_libraryId);
         myLibrary.book.borrowBook{value: msg.value}(_bookId);
+    }
+
+    function getLibraryBooks() public view {
+        Library memory myLibrary = _getMyLibrary(1);
+        myLibrary.book.getBooks();
     }
 }
