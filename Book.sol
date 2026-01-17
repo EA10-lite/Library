@@ -2,6 +2,8 @@
 
 pragma solidity ^0.8.18;
 
+// import {MemberContract} from "./Member.sol";
+
 contract BookContract {
     struct Book {
         uint256 ID;
@@ -17,6 +19,7 @@ contract BookContract {
     uint256[] public bookIds;
     mapping(uint256 => Book) public books;  // mapping book ids to books
     mapping(bytes32 => bool) private bookExist; // mapping to see if book exist
+    mapping(uint256 => address[]) public borrowedHistory; // mpaaing to keep all borrowed history
 
     function addBook(
         string memory _title,
@@ -49,5 +52,14 @@ contract BookContract {
     function getBookById(uint256 _ID)  public view returns (Book memory) {
         require(books[_ID].exists, "Book not found");
         return books[_ID];
+    }
+
+    function borrowBook(uint256 _ID) public {
+        require(books[_ID].available, "Book not available!");
+
+        Book storage myBook = books[_ID];
+        myBook.available = false;
+
+        borrowedHistory[_ID].push(msg.sender);
     }
 }
