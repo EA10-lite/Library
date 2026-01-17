@@ -152,27 +152,27 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0xecf1399e120198eb8f27eb214b3b5889e5feaeb12331d5841fbec5d0b285b89d",
+			"keccak256": "0x907d829343c8fe578344c8463578396bebc8ab621f96066c1a9802582744b4e6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7bc3ab3f601b4b9fd63e00aa9596b09e237ac562b5803b1fa8db06a18fb700c4",
-				"dweb:/ipfs/QmeRKQ7WDQY7g8k9rDcYRtWVCKN7nCr35qYSKin48SrZjQ"
+				"bzz-raw://d615044b7c6720b4d09f8443c840caca58020ee82e15e579493b143b683f5938",
+				"dweb:/ipfs/QmPmS3rzdtWy5rDcA24TH72bofxgyLaxo2KhBDdyQAhKaV"
 			]
 		},
 		"Library.sol": {
-			"keccak256": "0x1e409182812f0faef3328df29beea2679c25f3d559fe8874541fed8f91344786",
+			"keccak256": "0xe7d34083136a6b54ad54bda8bdf30354688db58d25476bbb6c059f51f2a3e9bf",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ccf98e56737a6347982c02b55c4a8aad5575097fd271ca78c3c7283eb25bafb9",
-				"dweb:/ipfs/QmQ32jEwhHzJ4ebm8bsyX7LY6e4gNnbX7dVgb37D3SsJeM"
+				"bzz-raw://3cefdd5a32e8129569a86c2f52d05539a3bdb607d4cb1be22e9aae4fbe7cfbd7",
+				"dweb:/ipfs/QmXxoyrnymkvx3x15JcT2WRhhpns4t3cSpo1i1uN3gepSr"
 			]
 		},
 		"Member.sol": {
-			"keccak256": "0x1c82c9fdc15986216a7512ae9c355d504854bea46d2d8191abb52e403bf52416",
+			"keccak256": "0x8f1c91002cc93ae6f5a9f8bf743fb2dc7568be8871b8959621c1ec3d7dbc7c4a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b835173621fa413c1f8708bd1ed5a1342cd7326af8f37c2355dc416ebbc05809",
-				"dweb:/ipfs/QmaXGFQSb1k1x3GiMAoNsjtfJ2UmcmAeRGHaUQuVNyPhaa"
+				"bzz-raw://d50f55eca3e42677d68d8af3f67f9a54b3bbb8318a1561b423ef9aff2533fe11",
+				"dweb:/ipfs/QmdPDg3iz5RZssFM2TH2mDxDX2FJMVRDAmaFAJbNfm445U"
 			]
 		}
 	},
