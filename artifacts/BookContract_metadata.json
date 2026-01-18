@@ -65,19 +65,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "bookCounter",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -185,15 +172,26 @@
 				"outputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "user",
 						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ID",
+						"type": "uint256"
+					}
+				],
 				"name": "buyBook",
 				"outputs": [],
 				"stateMutability": "payable",
@@ -392,6 +390,35 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "purchaseHistory",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "_ID",
 						"type": "uint256"
 					},
@@ -448,11 +475,11 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0x263bad197b28d454ae0b44e0d75352fbecf86c6ca74efefecf33df60dd505b26",
+			"keccak256": "0x383ae468a3641deef07669fe7176946548f88372db604315d4a0e9d3777e8162",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a906eec3d72b985a1eea045ca86f80208891088b95d83e01f7d5adf486d1d4a6",
-				"dweb:/ipfs/QmbjA9bF4J8MhaaefJYWKm5t4pUQstnTdMZpkk6PQSuZAC"
+				"bzz-raw://3bec640ae5af5c3c97b39bc170f941ba8f3275018610a6a2cb97bf7fc15d409a",
+				"dweb:/ipfs/QmV9oT1j3YPuQfYTDCgPExfPeiHSkQy3d44rxKyf4UTTDy"
 			]
 		},
 		"Member.sol": {

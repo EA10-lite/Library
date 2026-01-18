@@ -5,7 +5,8 @@ pragma solidity ^0.8.18;
 import {MemberContract} from "./Member.sol";
 
 contract BookContract {
-    uint256 public bookCounter;
+    bool private locked;
+    uint256 private bookCounter;
 
     MemberContract public memberContract; // reference to member contract
     address payable public libraryAdmin;   // address of library admin contract is created the non member fee is added
@@ -33,10 +34,16 @@ contract BookContract {
         uint256 date;
     }
 
+    struct Transaction {
+        address user;
+        uint256 timestamp;
+    }
+
     uint256[] public bookIds;
     mapping(uint256 => Book) public books;  // mapping book ids to books
     mapping(bytes32 => bool) private bookExist; // mapping to see if book exist
-    mapping(uint256 => address[]) public borrowedHistory; // mpaaing to keep all borrowed history
+    mapping(uint256 => Transaction[]) public borrowedHistory; // mapping to keep all borrowed history
+    mapping(uint256 => Transaction[]) public purchaseHistory; // mapping to keep all purchase history
 
     // bookId => address => currently borrowing ?
     // This is to keep track that one user cannot a borrow the same book more than once;
@@ -101,7 +108,7 @@ contract BookContract {
         return books[_ID];
     }
 
-    function borrowBook(uint256 _ID) public payable {
+    function borrowBook(uint256 _ID) public payable nonReentract {
         require(books[_ID].exists, "Book not found!");
         require(books[_ID].quantity > 0, "Book not available!");
         require(isBorrowing[_ID][msg.sender], "Already borrowed!");
@@ -115,7 +122,12 @@ contract BookContract {
         require(msg.value >= requiredPayment, "Not enough ETH sent");
 
         isBorrowing[_ID][msg.sender] = true;
-        borrowedHistory[_ID].push(msg.sender);
+        borrowedHistory[_ID].push(
+            Transaction({
+                user: msg.sender,
+                timestamp: block.timestamp
+            })
+        );
         myBook.quantity -= 1;
 
         // Forward ETH to library admin using call (safe method)
@@ -138,11 +150,44 @@ contract BookContract {
         books[_ID].quantity += 1;
     }
 
-    function buyBook() public payable {}
+    function buyBook(uint256 _ID) public payable nonReentract {
+        Book storage myBook = books[_ID];
+        require(myBook.exists, "Book not found");
+        require(myBook.quantity > 0, "Book out of stock");
+        require(msg.value >= myBook.price, "Insufficient payment");
+
+        // Reduce Book
+        myBook.quantity -= 1;
+        purchaseHistory[_ID].push(
+            Transaction({
+                user: msg.sender,
+                timestamp: block.timestamp
+            })
+        );
+
+        // Forward ETH to library admin using call (safe method)
+        (bool sent, ) = libraryAdmin.call{value: msg.value}("");
+        require(sent, "Failed to send ETH to library");
+
+        // Refund excess ETH
+        uint256 excess = msg.value - myBook.price;
+        if (excess > 0) {
+            (bool refunded, ) = payable(msg.sender).call{value: excess}("");
+            require(refunded, "Failed to refund excess ETH");
+        }
+        
+    }
 
 
     modifier onlyLibraryAdmin() {
         require(msg.sender == libraryAdmin, "Not library admin");
         _; // insert the body of the function
+    }
+
+    modifier nonReentract() {
+        require(!locked, "Reentrancy detected");
+        locked = true;
+        _;
+        locked = false;
     }
 }
