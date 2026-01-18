@@ -326,6 +326,30 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "isBorrowing",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "libraryAdmin",
 				"outputs": [
@@ -424,11 +448,11 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0x98803bf8cda70900b3b0d6f30ef50b2a7acbd6c03772fff58bc47743722d01d2",
+			"keccak256": "0x263bad197b28d454ae0b44e0d75352fbecf86c6ca74efefecf33df60dd505b26",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://aa5e242062b5920459071a5d4c784291cdad3f8ee626dfc880f2189102e4b5bd",
-				"dweb:/ipfs/QmTDTitcH83t9zqk69VYPm3ajcCPbz2WW7quQtJ7o9VDfE"
+				"bzz-raw://a906eec3d72b985a1eea045ca86f80208891088b95d83e01f7d5adf486d1d4a6",
+				"dweb:/ipfs/QmbjA9bF4J8MhaaefJYWKm5t4pUQstnTdMZpkk6PQSuZAC"
 			]
 		},
 		"Member.sol": {

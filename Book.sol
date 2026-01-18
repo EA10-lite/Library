@@ -38,6 +38,10 @@ contract BookContract {
     mapping(bytes32 => bool) private bookExist; // mapping to see if book exist
     mapping(uint256 => address[]) public borrowedHistory; // mpaaing to keep all borrowed history
 
+    // bookId => address => currently borrowing ?
+    // This is to keep track that one user cannot a borrow the same book more than once;
+    mapping(uint256 => mapping(address => bool)) public isBorrowing;
+
 
     function addBook(
         string memory _title,
@@ -100,6 +104,7 @@ contract BookContract {
     function borrowBook(uint256 _ID) public payable {
         require(books[_ID].exists, "Book not found!");
         require(books[_ID].quantity > 0, "Book not available!");
+        require(isBorrowing[_ID][msg.sender], "Already borrowed!");
 
         Book storage myBook = books[_ID];
 
@@ -109,6 +114,7 @@ contract BookContract {
             : nonMemberBorrowFee;
         require(msg.value >= requiredPayment, "Not enough ETH sent");
 
+        isBorrowing[_ID][msg.sender] = true;
         borrowedHistory[_ID].push(msg.sender);
         myBook.quantity -= 1;
 
@@ -124,7 +130,13 @@ contract BookContract {
         }
     }
 
-    function returnBook(uint256 _ID) public {}
+    function returnBook(uint256 _ID) public {
+        require(books[_ID].exists, "Book not found");
+        require(isBorrowing[_ID][msg.sender], "You did not borrow this book");
+
+        isBorrowing[_ID][msg.sender] = false;
+        books[_ID].quantity += 1;
+    }
 
     function buyBook() public payable {}
 

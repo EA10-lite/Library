@@ -215,11 +215,11 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0x4d2b4090d778e657c76836ab46f187ec123d072070667a3ef702c34bad035da1",
+			"keccak256": "0x263bad197b28d454ae0b44e0d75352fbecf86c6ca74efefecf33df60dd505b26",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://dbe918255ad6d8eba4a45002cdc21e9db09b77097cd7f5b04d97acea560ae401",
-				"dweb:/ipfs/QmVmwyeUSNvPpCnmkap1sCmJoSGYXZVYURMYLXqNevh9dm"
+				"bzz-raw://a906eec3d72b985a1eea045ca86f80208891088b95d83e01f7d5adf486d1d4a6",
+				"dweb:/ipfs/QmbjA9bF4J8MhaaefJYWKm5t4pUQstnTdMZpkk6PQSuZAC"
 			]
 		},
 		"Library.sol": {
