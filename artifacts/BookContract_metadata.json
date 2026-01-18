@@ -16,6 +16,11 @@
 						"internalType": "address payable",
 						"name": "_libraryAdmin",
 						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_nonMemberBorrowFee",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -57,6 +62,19 @@
 				"name": "addBook",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "bookCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -321,65 +339,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "listOfBooks",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "ID",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "title",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "author",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "genre",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "quantity",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "price",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "borrowFee",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "exists",
-						"type": "bool"
-					},
-					{
-						"internalType": "uint256",
-						"name": "date",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [],
 				"name": "memberContract",
 				"outputs": [
@@ -387,6 +346,19 @@
 						"internalType": "contract MemberContract",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nonMemberBorrowFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -406,6 +378,19 @@
 					}
 				],
 				"name": "restock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ID",
+						"type": "uint256"
+					}
+				],
+				"name": "returnBook",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -439,11 +424,11 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0xacf5377b7377bbecbc29d49884341d163bb6f7e386a9273e52931fd6628c6918",
+			"keccak256": "0x98803bf8cda70900b3b0d6f30ef50b2a7acbd6c03772fff58bc47743722d01d2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3a2512cc53ea657bf0dd6fd57dd7d5d535e879dcb46ea744392a980500487f7f",
-				"dweb:/ipfs/Qmdi3AvQTy6MbsggvYNWg8fpcEDjYzYK2h6pJdnoSAnx9m"
+				"bzz-raw://aa5e242062b5920459071a5d4c784291cdad3f8ee626dfc880f2189102e4b5bd",
+				"dweb:/ipfs/QmTDTitcH83t9zqk69VYPm3ajcCPbz2WW7quQtJ7o9VDfE"
 			]
 		},
 		"Member.sol": {

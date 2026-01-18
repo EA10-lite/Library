@@ -98,6 +98,7 @@ contract BookContract {
     }
 
     function borrowBook(uint256 _ID) public payable {
+        require(books[_ID].exists, "Book not found!");
         require(books[_ID].quantity > 0, "Book not available!");
 
         Book storage myBook = books[_ID];
@@ -122,6 +123,8 @@ contract BookContract {
             require(refunded, "Failed to refund excess ETH");
         }
     }
+
+    function returnBook(uint256 _ID) public {}
 
     function buyBook() public payable {}
 
