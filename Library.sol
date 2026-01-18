@@ -100,9 +100,19 @@ contract LibraryContract {
         myLibrary.book.restock(_bookId, _quantity);
     }
 
+    function buyBookFromLibrary(uint256 _libraryId, uint256 _bookId) public payable {
+        Library storage myLibrary = _getMyLibrary(_libraryId);
+        myLibrary.book.buyBook{value: msg.value}(_bookId);
+    }
+
     function borrowFromLibrary(uint256 _libraryId, uint256 _bookId) public payable {
         Library storage myLibrary = _getMyLibrary(_libraryId);
         myLibrary.book.borrowBook{value: msg.value}(_bookId);
+    }
+
+    function returnBorrowedBookg(uint256 _libraryId, uint256 _bookId) public {
+        Library storage myLibrary = _getMyLibrary(_libraryId);
+        myLibrary.book.returnBook(_bookId);
     }
 
     function getLibraryBooks() public view {

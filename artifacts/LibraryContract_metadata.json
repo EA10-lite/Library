@@ -95,6 +95,24 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_libraryId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_bookId",
+						"type": "uint256"
+					}
+				],
+				"name": "buyBookFromLibrary",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "getLibraryBooks",
 				"outputs": [],
@@ -185,6 +203,24 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_libraryId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_bookId",
+						"type": "uint256"
+					}
+				],
+				"name": "returnBorrowedBookg",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -208,26 +244,26 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0x263bad197b28d454ae0b44e0d75352fbecf86c6ca74efefecf33df60dd505b26",
+			"keccak256": "0xa010a82bb2b2a206b559d579532eceb85a2955354ebb1310ab04df5589903a8d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a906eec3d72b985a1eea045ca86f80208891088b95d83e01f7d5adf486d1d4a6",
-				"dweb:/ipfs/QmbjA9bF4J8MhaaefJYWKm5t4pUQstnTdMZpkk6PQSuZAC"
+				"bzz-raw://b0feb58759fd49bbfcd561e4b92760ab76b469bc1fd4c51aec7394f89f1a812e",
+				"dweb:/ipfs/QmawKXJN8DJEd9bkYtWMeUKKomzdyms3vgfbwVdbJ8J8yp"
 			]
 		},
 		"Library.sol": {
-			"keccak256": "0xdfdc0540a5e11194920954ca0250b0a59247b39bc17abcb80c2c1e84698b708a",
+			"keccak256": "0x03cfa5a430c95ddceafc56c1757e1999126b0640620c18feae4316f076dad3c9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://788ee7d8fd2283365f540a1621a0415ba3f93029adbde628d76e6068b978aa55",
-				"dweb:/ipfs/QmQ95Fjc9JcNWfijuV7mV1St8X5EqNgAqMeiY9XiZEr8JK"
+				"bzz-raw://bc3d757101e7bd65781de9a7ec98bdde20c32c16026e68432f965823bd31d2d7",
+				"dweb:/ipfs/QmbpfpPLhPLcPMRgULBwbBDX9ehKLYzgJCJFACTcKY3Qg3"
 			]
 		},
 		"Member.sol": {

@@ -49,6 +49,11 @@ contract BookContract {
     // This is to keep track that one user cannot a borrow the same book more than once;
     mapping(uint256 => mapping(address => bool)) public isBorrowing;
 
+    event BookAdded(uint256 indexed bookId, string title, uint256 quantity);
+    event BookBorrowed(uint256 indexed bookId, address indexed user, uint256 timestamp);
+    event BookReturned(uint256 indexed bookId, address indexed user, uint256 timestamp);
+    event BookPurchased(uint256 indexed bookId, address indexed user, uint256 timestamp, uint256 price);
+
 
     function addBook(
         string memory _title,
@@ -58,15 +63,15 @@ contract BookContract {
         uint256 _price,
         uint256 _borrowFee
     ) public onlyLibraryAdmin{
-        require(bytes(_title).length > 0, "Title cannot be empty!");
-        require(bytes(_author).length > 0, "Author cannot be empty!");
-        require(bytes(_genre).length > 0, "Genre cannot be empty!");
-        require(_quantity > 0, "Quantity must be greater than 0");
-        require(_price > 0, "Price must be greater than 0");
-        require(_borrowFee > 0, "Price must be greater than 0");
+        require(bytes(_title).length > 0, "Add Title");
+        require(bytes(_author).length > 0, "Add Author");
+        require(bytes(_genre).length > 0, "Add Genre");
+        require(_quantity > 0, "Add QTY");
+        require(_price > 0, "Add Price");
+        require(_borrowFee > 0, "Add Fee");
 
         bytes32 key = keccak256(abi.encodePacked(_title, _author));
-        require(!bookExist[key], "This book by this author already exists!");
+        require(!bookExist[key], "This book exists!");
         bookExist[key] = true;
 
         bookCounter += 1;
@@ -85,10 +90,11 @@ contract BookContract {
         );
 
         bookIds.push(_ID);
+        emit BookAdded(_ID, _title, _quantity);
     }
 
     function restock(uint256 _ID, uint256 _quantity) public onlyLibraryAdmin {
-        require(_quantity > 0, "Quantity must be greater than 0");
+        require(_quantity > 0, "Add QTY");
 
         Book storage book = books[_ID];
         require(book.exists, "Book not found");
@@ -129,6 +135,7 @@ contract BookContract {
             })
         );
         myBook.quantity -= 1;
+        emit BookBorrowed(_ID, msg.sender, block.timestamp);
 
         // Forward ETH to library admin using call (safe method)
         (bool sent, ) = libraryAdmin.call{value: requiredPayment}("");
@@ -144,10 +151,11 @@ contract BookContract {
 
     function returnBook(uint256 _ID) public {
         require(books[_ID].exists, "Book not found");
-        require(isBorrowing[_ID][msg.sender], "You did not borrow this book");
+        require(isBorrowing[_ID][msg.sender], "No borrow history");
 
         isBorrowing[_ID][msg.sender] = false;
         books[_ID].quantity += 1;
+        emit BookReturned(_ID, msg.sender, block.timestamp);
     }
 
     function buyBook(uint256 _ID) public payable nonReentract {
@@ -164,6 +172,8 @@ contract BookContract {
                 timestamp: block.timestamp
             })
         );
+
+        emit BookPurchased(_ID, msg.sender, block.timestamp, myBook.price);
 
         // Forward ETH to library admin using call (safe method)
         (bool sent, ) = libraryAdmin.call{value: msg.value}("");
