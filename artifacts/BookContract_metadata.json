@@ -37,6 +37,21 @@
 						"internalType": "string",
 						"name": "_genre",
 						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_quantity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_borrowFee",
+						"type": "uint256"
 					}
 				],
 				"name": "addBook",
@@ -94,9 +109,19 @@
 						"type": "string"
 					},
 					{
-						"internalType": "bool",
-						"name": "available",
-						"type": "bool"
+						"internalType": "uint256",
+						"name": "quantity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "borrowFee",
+						"type": "uint256"
 					},
 					{
 						"internalType": "bool",
@@ -150,6 +175,13 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "buyBook",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -182,9 +214,19 @@
 								"type": "string"
 							},
 							{
-								"internalType": "bool",
-								"name": "available",
-								"type": "bool"
+								"internalType": "uint256",
+								"name": "quantity",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "borrowFee",
+								"type": "uint256"
 							},
 							{
 								"internalType": "bool",
@@ -200,6 +242,66 @@
 						"internalType": "struct BookContract.Book",
 						"name": "",
 						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBooks",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "ID",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "author",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "genre",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "quantity",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "borrowFee",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "exists",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "date",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct BookContract.Book[]",
+						"name": "",
+						"type": "tuple[]"
 					}
 				],
 				"stateMutability": "view",
@@ -249,9 +351,19 @@
 						"type": "string"
 					},
 					{
-						"internalType": "bool",
-						"name": "available",
-						"type": "bool"
+						"internalType": "uint256",
+						"name": "quantity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "borrowFee",
+						"type": "uint256"
 					},
 					{
 						"internalType": "bool",
@@ -278,6 +390,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_quantity",
+						"type": "uint256"
+					}
+				],
+				"name": "restock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -309,11 +439,11 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0x907d829343c8fe578344c8463578396bebc8ab621f96066c1a9802582744b4e6",
+			"keccak256": "0xacf5377b7377bbecbc29d49884341d163bb6f7e386a9273e52931fd6628c6918",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d615044b7c6720b4d09f8443c840caca58020ee82e15e579493b143b683f5938",
-				"dweb:/ipfs/QmPmS3rzdtWy5rDcA24TH72bofxgyLaxo2KhBDdyQAhKaV"
+				"bzz-raw://3a2512cc53ea657bf0dd6fd57dd7d5d535e879dcb46ea744392a980500487f7f",
+				"dweb:/ipfs/Qmdi3AvQTy6MbsggvYNWg8fpcEDjYzYK2h6pJdnoSAnx9m"
 			]
 		},
 		"Member.sol": {

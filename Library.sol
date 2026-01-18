@@ -32,7 +32,8 @@ contract LibraryContract {
         MemberContract member = new MemberContract();
         BookContract book = new BookContract(
             address(member),
-            payable(msg.sender)
+            payable(msg.sender),
+            2000 wei
         );
 
         uint256 _ID = libraries.length + 1;
@@ -53,10 +54,20 @@ contract LibraryContract {
         uint256 _libraryId,
         string memory _title,
         string memory _author,
-        string memory _genre
+        string memory _genre,
+        uint256 _quantity,
+        uint256 _price,
+        uint256 _borrowFee
     ) public {
         Library storage myLibrary = _getMyLibrary(_libraryId);
-        myLibrary.book.addBook(_title, _author, _genre);
+        myLibrary.book.addBook(
+            _title,
+            _author,
+            _genre,
+            _quantity,
+            _price,
+            _borrowFee
+        );
     }
 
     function addNewMember(
@@ -82,6 +93,11 @@ contract LibraryContract {
         }
 
         revert("Library not found!");
+    }
+
+    function restockBook(uint256 _libraryId, uint256 _bookId, uint256 _quantity) public {
+        Library storage myLibrary = _getMyLibrary(_libraryId);
+        myLibrary.book.restock(_bookId, _quantity);
     }
 
     function borrowFromLibrary(uint256 _libraryId, uint256 _bookId) public payable {

@@ -5,61 +5,91 @@ pragma solidity ^0.8.18;
 import {MemberContract} from "./Member.sol";
 
 contract BookContract {
+    uint256 public bookCounter;
+
+    MemberContract public memberContract; // reference to member contract
+    address payable public libraryAdmin;   // address of library admin contract is created the non member fee is added
+    uint256 public nonMemberBorrowFee; // fee for borrowing a book for non-members
+
+    constructor(
+        address _memberContract,
+        address payable _libraryAdmin,
+        uint256 _nonMemberBorrowFee
+    ) {
+        memberContract = MemberContract(_memberContract);
+        libraryAdmin = _libraryAdmin;
+        nonMemberBorrowFee = _nonMemberBorrowFee;
+    }
+
     struct Book {
         uint256 ID;
         string title;
         string author;
         string genre;
-        bool available;
+        uint256 quantity;
+        uint256 price; // amount in wei
+        uint256 borrowFee; // amount in wei
         bool exists;
         uint256 date;
     }
 
-    MemberContract public memberContract; // reference to member contract
-    address payable public libraryAdmin;   // address of library admin
-
-    Book[] public listOfBooks;
     uint256[] public bookIds;
     mapping(uint256 => Book) public books;  // mapping book ids to books
     mapping(bytes32 => bool) private bookExist; // mapping to see if book exist
     mapping(uint256 => address[]) public borrowedHistory; // mpaaing to keep all borrowed history
 
-    constructor(address _memberContract, address payable _libraryAdmin) {
-        memberContract = MemberContract(_memberContract);
-        libraryAdmin = _libraryAdmin;
-    }
-
 
     function addBook(
         string memory _title,
         string memory _author,
-        string memory _genre
-    ) public {
+        string memory _genre,
+        uint256 _quantity,
+        uint256 _price,
+        uint256 _borrowFee
+    ) public onlyLibraryAdmin{
         require(bytes(_title).length > 0, "Title cannot be empty!");
         require(bytes(_author).length > 0, "Author cannot be empty!");
         require(bytes(_genre).length > 0, "Genre cannot be empty!");
+        require(_quantity > 0, "Quantity must be greater than 0");
+        require(_price > 0, "Price must be greater than 0");
+        require(_borrowFee > 0, "Price must be greater than 0");
 
         bytes32 key = keccak256(abi.encodePacked(_title, _author));
         require(!bookExist[key], "This book by this author already exists!");
         bookExist[key] = true;
 
-        uint256 _ID = listOfBooks.length + 1;
+        bookCounter += 1;
+        uint256 _ID = bookCounter;
+
         books[_ID] = Book(
             _ID,
             _title,
             _author,
             _genre,
-            true,
+            _quantity,
+            _price,
+            _borrowFee,
             true,
             block.timestamp
         );
 
-        listOfBooks.push(books[_ID]);
         bookIds.push(_ID);
     }
 
+    function restock(uint256 _ID, uint256 _quantity) public onlyLibraryAdmin {
+        require(_quantity > 0, "Quantity must be greater than 0");
+
+        Book storage book = books[_ID];
+        require(book.exists, "Book not found");
+        book.quantity += _quantity;
+    } 
+
     function getBooks() public view returns (Book[] memory) {
-        return listOfBooks;
+        Book[] memory allBooks = new Book[](bookIds.length);
+        for (uint256 i = 0; i < bookIds.length; i++) {
+            allBooks[i] = books[bookIds[i]];
+        }
+        return allBooks;
     }
 
     function getBookById(uint256 _ID)  public view returns (Book memory) {
@@ -68,15 +98,18 @@ contract BookContract {
     }
 
     function borrowBook(uint256 _ID) public payable {
-        require(books[_ID].available, "Book not available!");
-
-        bool isMember = memberContract.memberExist(msg.sender);
-        uint256 requiredPayment = isMember ? 1000 wei :  2000 wei;
-        require(msg.value >= requiredPayment, "Not enough ETH sent");
+        require(books[_ID].quantity > 0, "Book not available!");
 
         Book storage myBook = books[_ID];
-        myBook.available = false;
+
+        bool isMember = memberContract.memberExist(msg.sender);
+        uint256 requiredPayment = isMember
+            ? myBook.borrowFee 
+            : nonMemberBorrowFee;
+        require(msg.value >= requiredPayment, "Not enough ETH sent");
+
         borrowedHistory[_ID].push(msg.sender);
+        myBook.quantity -= 1;
 
         // Forward ETH to library admin using call (safe method)
         (bool sent, ) = libraryAdmin.call{value: requiredPayment}("");
@@ -88,5 +121,13 @@ contract BookContract {
             (bool refunded, ) = payable(msg.sender).call{value: excess}("");
             require(refunded, "Failed to refund excess ETH");
         }
+    }
+
+    function buyBook() public payable {}
+
+
+    modifier onlyLibraryAdmin() {
+        require(msg.sender == libraryAdmin, "Not library admin");
+        _; // insert the body of the function
     }
 }

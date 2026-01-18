@@ -26,6 +26,21 @@
 						"internalType": "string",
 						"name": "_genre",
 						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_quantity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_borrowFee",
+						"type": "uint256"
 					}
 				],
 				"name": "addNewBook",
@@ -147,6 +162,29 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_libraryId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_bookId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_quantity",
+						"type": "uint256"
+					}
+				],
+				"name": "restockBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -177,19 +215,19 @@
 	},
 	"sources": {
 		"Book.sol": {
-			"keccak256": "0x4a3a66157dc216de453a6158a00d1ed70986a3d6b6113c00d413b7a0856e0703",
+			"keccak256": "0x4d2b4090d778e657c76836ab46f187ec123d072070667a3ef702c34bad035da1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fe5540b078307ba1b09f6fac1b833bef711ca8d3aa7fe9f4da5fece52b46e5e9",
-				"dweb:/ipfs/QmeuS6uPxW7doQE6n1Lo2kNDrBTUyk3BAVTXT8HZ5ccQGj"
+				"bzz-raw://dbe918255ad6d8eba4a45002cdc21e9db09b77097cd7f5b04d97acea560ae401",
+				"dweb:/ipfs/QmVmwyeUSNvPpCnmkap1sCmJoSGYXZVYURMYLXqNevh9dm"
 			]
 		},
 		"Library.sol": {
-			"keccak256": "0xa281c0d6772401c8437b0df5db738380453f28c9646c4ab3fc23220960d474fa",
+			"keccak256": "0xdfdc0540a5e11194920954ca0250b0a59247b39bc17abcb80c2c1e84698b708a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6c5c2e94e33c195406a124133bd9bb9109af5e6c73bf2cafcb5cb96f556a33af",
-				"dweb:/ipfs/QmebJR6g3Swzq9RgA5FW8Yg2wrAcgSUMorvDLEUFxn3gfF"
+				"bzz-raw://788ee7d8fd2283365f540a1621a0415ba3f93029adbde628d76e6068b978aa55",
+				"dweb:/ipfs/QmQ95Fjc9JcNWfijuV7mV1St8X5EqNgAqMeiY9XiZEr8JK"
 			]
 		},
 		"Member.sol": {
