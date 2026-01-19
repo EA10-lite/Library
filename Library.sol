@@ -15,6 +15,7 @@ contract LibraryContract {
         MemberContract member;
     }
 
+    uint256 public constant MINIMUM_PRICE = 2000 wei;
     Library[] public libraries;
     mapping(address => bool) private libraryExist;
     mapping(string => bool) private libraryNameTaken;
@@ -33,7 +34,7 @@ contract LibraryContract {
         BookContract book = new BookContract(
             address(member),
             payable(msg.sender),
-            2000 wei
+            MINIMUM_PRICE
         );
 
         uint256 _ID = libraries.length + 1;
