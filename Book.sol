@@ -9,7 +9,7 @@ contract BookContract {
     uint256 private bookCounter;
 
     MemberContract public memberContract; // reference to member contract
-    address payable public libraryAdmin;   // address of library admin contract is created the non member fee is added
+    address payable public immutable i_libraryAdmin;   // address of library admin contract is created the non member fee is added
     uint256 public nonMemberBorrowFee; // fee for borrowing a book for non-members
 
     constructor(
@@ -18,7 +18,7 @@ contract BookContract {
         uint256 _nonMemberBorrowFee
     ) {
         memberContract = MemberContract(_memberContract);
-        libraryAdmin = _libraryAdmin;
+        i_libraryAdmin = _libraryAdmin;
         nonMemberBorrowFee = _nonMemberBorrowFee;
     }
 
@@ -138,7 +138,7 @@ contract BookContract {
         emit BookBorrowed(_ID, msg.sender, block.timestamp);
 
         // Forward ETH to library admin using call (safe method)
-        (bool sent, ) = libraryAdmin.call{value: requiredPayment}("");
+        (bool sent, ) = i_libraryAdmin.call{value: requiredPayment}("");
         require(sent, "Failed to send ETH to library");
 
         // Refund excess ETH
@@ -176,7 +176,7 @@ contract BookContract {
         emit BookPurchased(_ID, msg.sender, block.timestamp, myBook.price);
 
         // Forward ETH to library admin using call (safe method)
-        (bool sent, ) = libraryAdmin.call{value: msg.value}("");
+        (bool sent, ) = i_libraryAdmin.call{value: msg.value}("");
         require(sent, "Failed to send ETH to library");
 
         // Refund excess ETH
@@ -190,7 +190,7 @@ contract BookContract {
 
 
     modifier onlyLibraryAdmin() {
-        require(msg.sender == libraryAdmin, "Not library admin");
+        require(msg.sender == i_libraryAdmin, "Not library admin");
         _; // insert the body of the function
     }
 
