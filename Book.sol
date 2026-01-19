@@ -8,7 +8,7 @@ contract BookContract {
     bool private locked;
     uint256 private bookCounter;
 
-    MemberContract public memberContract; // reference to member contract
+    MemberContract public immutable i_memberContract; // reference to member contract
     address payable public immutable i_libraryAdmin;   // address of library admin contract is created the non member fee is added
     uint256 public nonMemberBorrowFee; // fee for borrowing a book for non-members
 
@@ -17,7 +17,7 @@ contract BookContract {
         address payable _libraryAdmin,
         uint256 _nonMemberBorrowFee
     ) {
-        memberContract = MemberContract(_memberContract);
+        i_memberContract = MemberContract(_memberContract);
         i_libraryAdmin = _libraryAdmin;
         nonMemberBorrowFee = _nonMemberBorrowFee;
     }
@@ -121,7 +121,7 @@ contract BookContract {
 
         Book storage myBook = books[_ID];
 
-        bool isMember = memberContract.memberExist(msg.sender);
+        bool isMember = i_memberContract.memberExist(msg.sender);
         uint256 requiredPayment = isMember
             ? myBook.borrowFee 
             : nonMemberBorrowFee;
